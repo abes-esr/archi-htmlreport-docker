@@ -28,7 +28,7 @@ do
 
     test -f ./create-htmlreport.postscript.sh && \
       echo "-> Running the create-htmlreport.postscript.sh script."
-    test -f ./create-htmlreport.postscript.sh && ./create-htmlreport.postscript.sh
+    test -f ./create-htmlreport.postscript.sh && chmod +x ./create-htmlreport.postscript.sh && ./create-htmlreport.postscript.sh
 
     GIT_HASH_OLD=$GIT_HASH_NEW
   else
