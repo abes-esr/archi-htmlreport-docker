@@ -32,5 +32,10 @@ COPY ./package.json /usr/share/nginx/html/
 COPY ./docker-entrypoint.sh /
 COPY ./create-htmlreport.periodically.sh /
 
+# for git clone through ssh stuff
+RUN mkdir -p /root/.ssh/
+echo "Host *
+    StrictHostKeyChecking no" > /root/.ssh/config
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]

@@ -15,6 +15,12 @@ then
   exit 1
 fi
 
+# to be ok with git clone with ssh auth
+cp -f /root/.ssh/id_rsa.orig /root/.ssh/id_rsa
+cp -f /root/.ssh/id_rsa.pub.orig /root/.ssh/id_rsa.pub
+chmod 600 /root/.ssh/id_rsa
+chmod 644 /root/.ssh/id_rsa.pub
+
 /create-htmlreport.periodically.sh &
 
 # exec the CMD (see Dockerfile comming from nginx docker image)
