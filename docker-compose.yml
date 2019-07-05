@@ -6,8 +6,8 @@ services:
     container_name: archi-htmlreport
     image: abes-esr/archi-htmlreport-docker:1.0.1
     volumes:
-      ./id_rsa_archi:/root/.ssh/id_rsa.orig
-      ./id_rsa_archi.pub:/root/.ssh/id_rsa.pub.orig
+      - ./id_rsa_archi:/root/.ssh/id_rsa.orig
+      - ./id_rsa_archi.pub:/root/.ssh/id_rsa.pub.orig
     environment:
       GIT_CHECK_EACH_NBMINUTES: ${GIT_CHECK_EACH_NBMINUTES}
       GIT_REPOSITORY: ${GIT_REPOSITORY}
