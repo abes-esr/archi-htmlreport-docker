@@ -1,5 +1,7 @@
 # archi-htmlreport-docker
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/abesesr/archi-htmlreport-docker.svg)](https://hub.docker.com/r/abesesr/archi-htmlreport-docker/)
+
 Generates and exposes an HTML web site from a ArchiMateTool model.
 
 We uses it internally at [Abes](http://abes.fr) to generate our "urbanization web site" helping us to know how is organized our IT system.
