@@ -23,12 +23,11 @@ This git repository will be cloned at `/archi-model-git-repo/` location. It soul
 # For production
 
 ```
-docker run -d --name "archi-htmlreport-docker" -p 8080:80 \
-  -v $(pwd)/id_rsa_archi:/root/.ssh/id_rsa.orig \
-  -v $(pwd)/id_rsa_archi.pub:/root/.ssh/id_rsa.pub.orig \
-  -e GIT_CHECK_EACH_NBMINUTES=5 \
-  -e GIT_REPOSITORY="git@git.abes.fr:supi/Archi.git" \
-  abes-esr/archi-htmlreport-docker:1.0.1
+mkdir archi-htmlreport/ && cd archi-htmlreport/
+echo 'GIT_CHECK_EACH_NBMINUTES=5' > .env
+echo 'GIT_REPOSITORY="git@git.abes.fr:supi/Archi.git"' >> .env
+wget https://raw.githubusercontent.com/abes-esr/archi-htmlreport-docker/master/docker-compose.yml
+docker-compose up -d
 ```
 
 # For developers
