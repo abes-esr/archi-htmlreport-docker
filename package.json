@@ -1,6 +1,6 @@
 {
   "name": "archi-htmlreport-docker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generates and exposes an HTML web site from a ArchiMateTool model.",
   "private": true,
   "scripts": {
