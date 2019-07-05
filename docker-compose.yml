@@ -4,7 +4,7 @@ services:
 
   archi-htmlreport:
     container_name: archi-htmlreport
-    image: abes-esr/archi-htmlreport-docker:1.0.2
+    image: abes-esr/archi-htmlreport-docker:1.0.3
     volumes:
       - ./id_rsa_archi:/root/.ssh/id_rsa.orig
       - ./id_rsa_archi.pub:/root/.ssh/id_rsa.pub.orig

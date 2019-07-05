@@ -34,11 +34,11 @@ docker-compose up -d
 
 To test it locally
 ```
-docker build -t abes-esr/archi-htmlreport-docker:1.0.2 .
+docker build -t abes-esr/archi-htmlreport-docker:1.0.3 .
 docker run --rm -p 8080:80 \
   -v $(pwd)/id_rsa_archi:/root/.ssh/id_rsa.orig \
   -v $(pwd)/id_rsa_archi.pub:/root/.ssh/id_rsa.pub.orig \
   -e GIT_CHECK_EACH_NBMINUTES=5 \
   -e GIT_REPOSITORY="git@git.abes.fr:supi/Archi.git" \
-  abes-esr/archi-htmlreport-docker:1.0.2
+  abes-esr/archi-htmlreport-docker:1.0.3
 ```
