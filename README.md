@@ -46,3 +46,8 @@ docker run --rm -p 8080:80 \
   -e GIT_REPOSITORY="git@git.abes.fr:supi/Archi.git" \
   abesesr/archi-htmlreport-docker:1.0.5
 ```
+To generate a new version, just uses npm version stuff. Example:
+- `npm version patch` will bump the latest version number
+- `npm version minor` will bump the second version number
+- `npm version major` will bump the first version number
+It will autobuild a new docker image thanks to the [autobuild dockerhub system](ttps://hub.docker.com/r/abesesr/archi-htmlreport-docker/).
