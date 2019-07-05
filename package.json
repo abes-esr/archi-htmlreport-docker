@@ -4,12 +4,18 @@
   "description": "Generates and exposes an HTML web site from a ArchiMateTool model.",
   "private": true,
   "scripts": {
-    "insertversion": "cross-var sed -i \"s#\\\\(abes-esr/archi-htmlreport-docker:\\\\)\\\\([\\\\.a-z0-9]\\\\+\\\\)#\\\\1$npm_package_version#g\" docker-compose.yml README.md",
+    "insertversion": "cross-var sed -i \"s#\\\\(abesesr/archi-htmlreport-docker:\\\\)\\\\([\\\\.a-z0-9]\\\\+\\\\)#\\\\1$npm_package_version#g\" docker-compose.yml README.md",
     "version": "npm run insertversion && git add docker-compose.yml README.md",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "cross-var": "^1.1.0"
   },
+  "contributors": [
+    {
+      "name": "Stéphane Gully",
+      "url": "https://github.com/kerphi"
+    }
+  ],
   "license": "MIT"
 }
