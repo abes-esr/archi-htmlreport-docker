@@ -18,7 +18,7 @@ GIT_REPOSITORY will be cloned at `/archi-model-git-repo/` location. It should ha
 If you need ssh to clone GIT_REPOSITORY, then you have to share the local id_ras ssh key in the container at this place:
   - `/root/.ssh/id_rsa.orig`
   - `/root/.ssh/id_rsa.pub.orig`
-The container will copy it to `/root/.ssh/id_rsa` and `/root/.ssh/id_rsa.pub` with a correct chown.
+The container will copy it to `/root/.ssh/id_rsa` and `/root/.ssh/id_rsa.pub` with a correct chmod.
 
 # Internal structure
 
