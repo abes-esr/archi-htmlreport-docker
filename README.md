@@ -45,6 +45,8 @@ docker build -t abesesr/archi-htmlreport-docker:1.0.5 .
 docker run --rm -p 8080:80 \
   -v $(pwd)/id_rsa_archi:/root/.ssh/id_rsa.orig \
   -v $(pwd)/id_rsa_archi.pub:/root/.ssh/id_rsa.pub.orig \
+  -v $(pwd)/docker-entrypoint.sh:/docker-entrypoint.sh \
+  -v $(pwd)/create-htmlreport.periodically.sh:/create-htmlreport.periodically.sh \
   -e GIT_CHECK_EACH_NBMINUTES=5 \
   -e GIT_REPOSITORY="git@git.abes.fr:supi/Archi.git" \
   abesesr/archi-htmlreport-docker:1.0.5
