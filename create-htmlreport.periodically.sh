@@ -19,16 +19,22 @@ do
 
   if [ "$GIT_HASH_OLD" != "$GIT_HASH_NEW" ]; then
     echo "-> Generating HTML report from the archimatetool model."
+
+    mkdir -p /usr/share/nginx/html-tmp && rm -rf /usr/share/nginx/html-tmp/*
+    cp /version.html /usr/share/nginx/html-tmp/
+
     cd /archi-model-git-repo/
     xvfb-run /Archi/Archi -consoleLog -nosplash \
       -application com.archimatetool.commandline.app \
       --modelrepository.loadModel /archi-model-git-repo/ \
       -saveModel /archi-model-git-repo/model.archimate \
-      --html.createReport /usr/share/nginx/html
+      --html.createReport /usr/share/nginx/html-tmp
 
     test -f ./create-htmlreport.postscript.sh && \
       echo "-> Running the create-htmlreport.postscript.sh script."
     test -f ./create-htmlreport.postscript.sh && chmod +x ./create-htmlreport.postscript.sh && ./create-htmlreport.postscript.sh
+
+    rm -rf /usr/share/nginx/html && mv /usr/share/nginx/html-tmp /usr/share/nginx/html
 
     GIT_HASH_OLD=$GIT_HASH_NEW
   else
