@@ -35,7 +35,7 @@ wget https://raw.githubusercontent.com/abes-esr/archi-htmlreport-docker/master/d
 docker-compose up -d
 ```
 
-Generated web site will listen on http://127.0.0.1:8081 (replace 127.0.0.1 by your server IP)
+Generated web site will listen on http://127.0.0.1:8080 (replace 127.0.0.1 by your server IP)
 
 # For developers
 
