@@ -6,6 +6,8 @@ Generates and exposes an HTML web site from a ArchiMateTool model.
 
 We uses it internally at [Abes](http://abes.fr) to generate our "urbanization web site" helping us to know how is organized our IT system.
 
+![Demo](doc/Screencast_07-07-2019_18_51_02.gif)
+
 # Parameters
 
 - `GIT_REPOSITORY` : git url of the archimatetool model (mandatory)
