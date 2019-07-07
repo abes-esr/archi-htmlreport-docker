@@ -35,6 +35,7 @@ do
     test -f ./create-htmlreport.postscript.sh && chmod +x ./create-htmlreport.postscript.sh && ./create-htmlreport.postscript.sh
 
     rm -rf /usr/share/nginx/html && mv /usr/share/nginx/html-tmp /usr/share/nginx/html
+    echo "-> HTML report generated!"
 
     GIT_HASH_OLD=$GIT_HASH_NEW
   else
