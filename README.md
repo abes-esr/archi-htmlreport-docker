@@ -30,7 +30,7 @@ The container will copy it to `/root/.ssh/id_rsa` and `/root/.ssh/id_rsa.pub` wi
 ```
 mkdir archi-htmlreport/ && cd archi-htmlreport/
 echo 'GIT_CHECK_EACH_NBMINUTES=5' > .env
-echo 'GIT_REPOSITORY="git@git.abes.fr:supi/Archi.git"' >> .env
+echo 'GIT_REPOSITORY=git@git.abes.fr:supi/Archi.git' >> .env
 wget https://raw.githubusercontent.com/abes-esr/archi-htmlreport-docker/master/docker-compose.yml
 docker-compose up -d
 ```
