@@ -20,8 +20,10 @@ RUN wget https://www.archimatetool.com/downloads/${ARCHI_VERSION}/Archi-Linux64-
     rm -f /Archi-Linux64-${ARCHI_VERSION}.tgz
 
 # git plugin for archimatetool 
-RUN wget https://www.archimatetool.com/downloads/plugins/org.archicontribs.modelrepository_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.zip && \
-  cd /Archi/plugins/ && \
+# Notice: the plugin is downloaded manually from https://www.archimatetool.com/plugins/
+#         because the download URL is not stable (old .zip are not kept)
+COPY ./org.archicontribs.modelrepository_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.zip /
+RUN cd /Archi/plugins/ && \
   unzip /org.archicontribs.modelrepository_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.zip && \
   rm -f /org.archicontribs.modelrepository_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.zip
 
