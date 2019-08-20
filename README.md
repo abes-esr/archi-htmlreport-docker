@@ -43,7 +43,7 @@ Generated web site will listen on http://127.0.0.1:8080 (replace 127.0.0.1 by yo
 
 To test it locally
 ```
-docker build -t abesesr/archi-htmlreport-docker:1.1.3 .
+docker build -t abesesr/archi-htmlreport-docker:1.1.4 .
 docker run --rm -p 8080:80 \
   -v $(pwd)/id_rsa_archi:/root/.ssh/id_rsa.orig \
   -v $(pwd)/id_rsa_archi.pub:/root/.ssh/id_rsa.pub.orig \
@@ -51,7 +51,7 @@ docker run --rm -p 8080:80 \
   -v $(pwd)/create-htmlreport.periodically.sh:/create-htmlreport.periodically.sh \
   -e GIT_CHECK_EACH_NBMINUTES=5 \
   -e GIT_REPOSITORY="git@git.abes.fr:supi/Archi.git" \
-  abesesr/archi-htmlreport-docker:1.1.3
+  abesesr/archi-htmlreport-docker:1.1.4
 ```
 To generate a new version, just uses npm version stuff. Example:
 - `npm version patch` will bump the latest version number
