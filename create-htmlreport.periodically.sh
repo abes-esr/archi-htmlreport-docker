@@ -18,12 +18,16 @@ do
   fi
 
   if [ "$GIT_HASH_OLD" != "$GIT_HASH_NEW" ]; then
-    echo "-> Generating HTML report from the archimatetool model."
+    cd /archi-model-git-repo/
 
+    test -f ./create-htmlreport.prescript.sh && \
+      echo "-> Running the create-htmlreport.prescript.sh script."
+    test -f ./create-htmlreport.prescript.sh && chmod +x ./create-htmlreport.prescript.sh && ./create-htmlreport.prescript.sh
+
+    echo "-> Generating HTML report from the archimatetool model."
     mkdir -p /usr/share/nginx/html-tmp && rm -rf /usr/share/nginx/html-tmp/*
     cp /version.html /usr/share/nginx/html-tmp/
 
-    cd /archi-model-git-repo/
     xvfb-run /Archi/Archi -consoleLog -nosplash \
       -application com.archimatetool.commandline.app \
       --modelrepository.loadModel /archi-model-git-repo/ \
