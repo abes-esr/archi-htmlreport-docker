@@ -28,8 +28,8 @@ RUN wget https://www.archimatetool.com/downloads/plugins/org.archicontribs.model
 COPY ./package.json /usr/share/nginx/html/
 COPY ./docker-entrypoint.sh /
 COPY ./create-htmlreport.periodically.sh /
-RUN echo "abesesr/archi-htmlreport-docker:1.1.4 generated web site is empty." > /usr/share/nginx/html/index.html && \
-    echo "abesesr/archi-htmlreport-docker:1.1.4" > /version.html
+RUN echo "abesesr/archi-htmlreport-docker:1.2.0 generated web site is empty." > /usr/share/nginx/html/index.html && \
+    echo "abesesr/archi-htmlreport-docker:1.2.0" > /version.html
 
 # for git clone through ssh stuff
 RUN mkdir -p /root/.ssh/
