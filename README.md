@@ -10,7 +10,7 @@ We uses it internally at [Abes](http://abes.fr) to generate our "urbanization we
 
 # Parameters
 
-Parameters comming from environment variables:
+Parameters coming from environment variables:
 
 - `GIT_REPOSITORY` : git url of the archimatetool model (mandatory)
 - `GIT_CHECK_EACH_NBMINUTES` : time to wait before checking again git repository change (default: 5 minutes)
@@ -73,4 +73,6 @@ To generate a new version, just uses npm version stuff. Example:
 - `npm version major` will bump the first version number
 
 It will autobuild a new docker image thanks to the [autobuild dockerhub system](ttps://hub.docker.com/r/abesesr/archi-htmlreport-docker/).
-The latest generated docker image name and tag is: `abesesr/archi-htmlreport-docker:1.2.2`
+The latest generated docker image name and tag is:
+
+`abesesr/archi-htmlreport-docker:1.2.2`
