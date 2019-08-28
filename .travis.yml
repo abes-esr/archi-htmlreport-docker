@@ -11,7 +11,7 @@ before_install:
   - docker build -t abesesr/archi-htmlreport-docker:fortravis .
   - docker run -d --rm -p 8080:80 --name archi-htmlreport-fortravis -e GIT_REPOSITORY="https://github.com/abes-esr/archi-model-example.git" abesesr/archi-htmlreport-docker:fortravis
   - docker ps
-  - docker logs archi-htmlreport-fortravis
+  - sleep 20 && docker logs archi-htmlreport-fortravis
 script:
   # 1st test: 1 running container
   - NB_CONTAINERS=$(docker ps | grep " Up " | wc -l)
