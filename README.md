@@ -8,6 +8,15 @@ We uses it internally at [Abes](http://abes.fr) to generate our "urbanization we
 
 ![Demo](doc/Screencast_07-07-2019_18_51_02.gif)
 
+# Quickstart
+
+```shell
+docker run --rm -p 8080:80 \
+  -e GIT_REPOSITORY="https://github.com/abes-esr/archi-model-example.git" \
+  abesesr/archi-htmlreport-docker:1.3.1
+```
+Then browse to http://127.0.0.1:8080/ it will display the [demo ArchiMateTool model](https://github.com/abes-esr/archi-model-example.git) in a basic website.
+
 # Parameters
 
 Parameters coming from environment variables:
