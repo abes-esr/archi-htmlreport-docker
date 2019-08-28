@@ -45,7 +45,7 @@ GIT_REPOSITORY git repo should have somes data at a specific location:
 ```
 mkdir archi-htmlreport/ && cd archi-htmlreport/
 echo 'GIT_CHECK_EACH_NBMINUTES=5' > .env
-echo 'GIT_REPOSITORY=git@git.abes.fr:supi/Archi.git' >> .env
+echo 'GIT_REPOSITORY=https://github.com/abes-esr/archi-model-example.git' >> .env
 wget https://raw.githubusercontent.com/abes-esr/archi-htmlreport-docker/master/docker-compose.yml
 docker-compose up -d
 ```
@@ -59,12 +59,10 @@ To test it locally
 ```
 docker build -t abesesr/archi-htmlreport-docker:1.2.2 .
 docker run --rm -p 8080:80 \
-  -v $(pwd)/id_rsa_archi:/root/.ssh/id_rsa.orig \
-  -v $(pwd)/id_rsa_archi.pub:/root/.ssh/id_rsa.pub.orig \
   -v $(pwd)/docker-entrypoint.sh:/docker-entrypoint.sh \
   -v $(pwd)/create-htmlreport.periodically.sh:/create-htmlreport.periodically.sh \
   -e GIT_CHECK_EACH_NBMINUTES=5 \
-  -e GIT_REPOSITORY="git@git.abes.fr:supi/Archi.git" \
+  -e GIT_REPOSITORY="https://github.com/abes-esr/archi-model-example.git" \
   abesesr/archi-htmlreport-docker:1.2.2
 ```
 
