@@ -23,23 +23,26 @@ do
 
   if [ "$GIT_HASH_OLD" != "$GIT_HASH_NEW" ]; then
     cd /archi-model-git-repo/
+    mkdir -p /usr/share/nginx/html-tmp/ && rm -rf /usr/share/nginx/html-tmp/*
 
-    test -f ./create-htmlreport.prescript.sh && \
+    if [ -f ./create-htmlreport.prescript.sh ]; then
       echo "-> Running the create-htmlreport.prescript.sh script."
-    test -f ./create-htmlreport.prescript.sh && chmod +x ./create-htmlreport.prescript.sh && ./create-htmlreport.prescript.sh
+      chmod +x ./create-htmlreport.prescript.sh
+      ./create-htmlreport.prescript.sh
+    fi
 
     echo "-> Generating HTML report from the archimatetool model."
-    mkdir -p /usr/share/nginx/html-tmp && rm -rf /usr/share/nginx/html-tmp/*
-
     xvfb-run /Archi/Archi -consoleLog -nosplash \
       -application com.archimatetool.commandline.app \
       --modelrepository.loadModel /archi-model-git-repo/ \
       -saveModel /archi-model-git-repo/model.archimate \
       --html.createReport /usr/share/nginx/html-tmp
 
-    test -f ./create-htmlreport.postscript.sh && \
+    if [ -f ./create-htmlreport.postscript.sh ]; then
       echo "-> Running the create-htmlreport.postscript.sh script."
-    test -f ./create-htmlreport.postscript.sh && chmod +x ./create-htmlreport.postscript.sh && ./create-htmlreport.postscript.sh
+      chmod +x ./create-htmlreport.postscript.sh
+      ./create-htmlreport.postscript.sh
+    fi
 
     rm -rf /usr/share/nginx/html && mv /usr/share/nginx/html-tmp /usr/share/nginx/html
     echo "-> HTML report generated!"
