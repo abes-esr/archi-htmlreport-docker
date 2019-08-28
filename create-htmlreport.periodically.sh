@@ -4,6 +4,10 @@
 while true
 do
 
+  # this script logs to this file so each time a new loop begins
+  # we start with the date of the execution
+  date > /tmp/create-htmlreport.periodically.log
+
   if [ ! -d /archi-model-git-repo/ ]; then
     echo "-> Git clone of archimatetool model repository: $GIT_REPOSITORY"
     git clone --depth 1 $GIT_REPOSITORY /archi-model-git-repo/
