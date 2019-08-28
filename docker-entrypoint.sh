@@ -21,7 +21,9 @@ cp -f /root/.ssh/id_rsa.pub.orig /root/.ssh/id_rsa.pub
 chmod 600 /root/.ssh/id_rsa
 chmod 644 /root/.ssh/id_rsa.pub
 
-/create-htmlreport.periodically.sh &
+# run create-htmlreport.periodically.sh in the background
+# and log stdout/stderr to a file AND to stdout (in order to see the logs from docker)
+(/create-htmlreport.periodically.sh 2>&1 | tee -a /tmp/create-htmlreport.periodically.log &)
 
 # exec the CMD (see Dockerfile comming from nginx docker image)
 exec "$@"
