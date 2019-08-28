@@ -51,6 +51,7 @@ do
   fi
 
   echo "-> Waiting $GIT_CHECK_EACH_NBMINUTES minutes before next model check."
+  cp -f /tmp/create-htmlreport.periodically.log /usr/share/nginx/html/
   sleep ${GIT_CHECK_EACH_NBMINUTES}m
 
 done
