@@ -30,7 +30,6 @@ do
 
     echo "-> Generating HTML report from the archimatetool model."
     mkdir -p /usr/share/nginx/html-tmp && rm -rf /usr/share/nginx/html-tmp/*
-    cp /version.html /usr/share/nginx/html-tmp/
 
     xvfb-run /Archi/Archi -consoleLog -nosplash \
       -application com.archimatetool.commandline.app \
@@ -51,7 +50,10 @@ do
   fi
 
   echo "-> Waiting $GIT_CHECK_EACH_NBMINUTES minutes before next model check."
+  # push few info to the web folder: version.html and create-htmlreport.periodically.log.html
+  cp -f /version.html /usr/share/nginx/html/
   cp -f /tmp/create-htmlreport.periodically.log.html /usr/share/nginx/html/
+  # and sleep
   sleep ${GIT_CHECK_EACH_NBMINUTES}m
 
 done
