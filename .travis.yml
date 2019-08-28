@@ -13,10 +13,10 @@ before_install:
   - docker ps
   - sleep 20 && docker logs archi-htmlreport-fortravis
 script:
-  # 1st test: 1 running container
+  # 1st test: 1 running container?
   - NB_CONTAINERS=$(docker ps | grep " Up " | wc -l)
   - test $NB_CONTAINERS = 1
-  # 2nd test: create-htmlreport post and pre scripts are working
+  # 2nd test: create-htmlreport post and pre scripts are working?
   - test $(curl -s http://127.0.0.1:8080/create-htmlreport.prescript.sh.html) = "OK"
   - test $(curl -s http://127.0.0.1:8080/create-htmlreport.postscript.sh.html) = "OK"
 
