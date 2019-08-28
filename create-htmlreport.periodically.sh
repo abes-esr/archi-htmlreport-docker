@@ -6,7 +6,7 @@ do
 
   # this script logs to this file so each time a new loop begins
   # we start with the date of the execution
-  date > /tmp/create-htmlreport.periodically.log
+  date > /tmp/create-htmlreport.periodically.log.html
 
   if [ ! -d /archi-model-git-repo/ ]; then
     echo "-> Git clone of archimatetool model repository: $GIT_REPOSITORY"
@@ -51,7 +51,7 @@ do
   fi
 
   echo "-> Waiting $GIT_CHECK_EACH_NBMINUTES minutes before next model check."
-  cp -f /tmp/create-htmlreport.periodically.log /usr/share/nginx/html/
+  cp -f /tmp/create-htmlreport.periodically.log.html /usr/share/nginx/html/
   sleep ${GIT_CHECK_EACH_NBMINUTES}m
 
 done
