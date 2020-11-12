@@ -1,4 +1,4 @@
-FROM nginx:1.17.1
+FROM nginx:1.19.4
 
 MAINTAINER Stéphane Gully <gully@abes.fr>
 
@@ -11,8 +11,9 @@ ENV ARCHI_PLUGIN_MODELREPOSITORY_VERSION 0.6.2.202004031233
 # git for archi model download and updates
 # wget/uzip for Archi/plugins download and extracting
 # vim for easy debug
+
 RUN apt update && \
-    apt install -y xvfb libswt-gtk2-4-jni jq git unzip wget vim
+    apt install -y xvfb libswt-gtk-4-jni jq git unzip wget vim
 
 # download archimatetool
 RUN wget https://www.archimatetool.com/downloads/archi/Archi-Linux64-${ARCHI_VERSION}.tgz && \
