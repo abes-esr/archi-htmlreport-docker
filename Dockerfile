@@ -15,7 +15,7 @@ RUN apt update && \
     apt install -y xvfb libswt-gtk2-4-jni jq git unzip wget vim
 
 # download archimatetool
-RUN wget https://www.archimatetool.com/downloads/${ARCHI_VERSION}/Archi-Linux64-${ARCHI_VERSION}.tgz && \
+RUN wget https://www.archimatetool.com/downloads/archi/Archi-Linux64-${ARCHI_VERSION}.tgz && \
     tar -zxvf /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     rm -f /Archi-Linux64-${ARCHI_VERSION}.tgz
 
