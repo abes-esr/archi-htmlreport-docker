@@ -2,8 +2,8 @@ FROM nginx:1.17.1
 
 MAINTAINER Stéphane Gully <gully@abes.fr>
 
-ENV ARCHI_VERSION 4.4.0
-ENV ARCHI_PLUGIN_MODELREPOSITORY_VERSION 0.5.2.201907081356
+ENV ARCHI_VERSION 4.7.0
+ENV ARCHI_PLUGIN_MODELREPOSITORY_VERSION 0.6.2.202004031233
 
 # libswt-gtk2-4-jni for archimatetool system dependency
 # xvfb for a headless Xserver needed by archimatetool -nosplash to run without error
