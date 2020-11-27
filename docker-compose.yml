@@ -11,6 +11,7 @@ services:
     environment:
       GIT_CHECK_EACH_NBMINUTES: ${GIT_CHECK_EACH_NBMINUTES}
       GIT_REPOSITORY: ${GIT_REPOSITORY}
+      #JAVA_OPTIONS: "-Xmx4024m -Xms512m"
     tty: true         # to have nice debug(...) outputs
     stdin_open: true  # to be able to use CTRL+C to stop the debug
     ports:
