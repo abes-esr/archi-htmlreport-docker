@@ -2,8 +2,11 @@ FROM nginx:1.19.4
 
 MAINTAINER Stéphane Gully <gully@abes.fr>
 
-ENV ARCHI_VERSION 4.7.1
-ENV ARCHI_PLUGIN_MODELREPOSITORY_VERSION 0.6.2.202004031233
+ENV ARCHI_VERSION 4.8.1
+ENV ARCHI_PLUGIN_MODELREPOSITORY_VERSION 0.7.1.202102021056
+
+
+WORKDIR /
 
 # libswt-gtk2-4-jni for archimatetool system dependency
 # xvfb for a headless Xserver needed by archimatetool -nosplash to run without error
@@ -16,17 +19,20 @@ RUN apt update && \
     apt install -y xvfb libswt-gtk-4-jni jq git unzip wget vim
 
 # download archimatetool
-RUN wget https://www.archimatetool.com/downloads/archi/Archi-Linux64-${ARCHI_VERSION}.tgz && \
+RUN wget --output-document="/Archi-Linux64-${ARCHI_VERSION}.tgz" \
+         --post-data="dl=Archi-Linux64-${ARCHI_VERSION}.tgz" \
+         https://www.archimatetool.com/downloads/archi/ && \
     tar -zxvf /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     rm -f /Archi-Linux64-${ARCHI_VERSION}.tgz
 
 # git plugin for archimatetool 
 # Notice: the plugin is downloaded manually from https://www.archimatetool.com/plugins/
 #         because the download URL is not stable (old .zip are not kept)
-COPY ./org.archicontribs.modelrepository_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.zip /
+
+COPY ./org.archicontribs.modelrepository_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin /
 RUN cd /Archi/plugins/ && \
-  unzip /org.archicontribs.modelrepository_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.zip && \
-  rm -f /org.archicontribs.modelrepository_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.zip
+  unzip /org.archicontribs.modelrepository_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin && \
+  rm -f /org.archicontribs.modelrepository_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin
 
 COPY ./package.json /usr/share/nginx/html/
 COPY ./docker-entrypoint.sh /
