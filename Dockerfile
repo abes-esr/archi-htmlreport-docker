@@ -2,8 +2,8 @@ FROM nginx:1.19.4
 
 MAINTAINER Stéphane Gully <gully@abes.fr>
 
-ENV ARCHI_VERSION 4.8.1
-ENV ARCHI_PLUGIN_MODELREPOSITORY_VERSION 0.7.1.202102021056
+ENV ARCHI_VERSION 4.9.1
+ENV ARCHI_PLUGIN_MODELREPOSITORY_VERSION 0.8.0.202110121448
 
 
 WORKDIR /
@@ -29,10 +29,10 @@ RUN wget --output-document="/Archi-Linux64-${ARCHI_VERSION}.tgz" \
 # Notice: the plugin is downloaded manually from https://www.archimatetool.com/plugins/
 #         because the download URL is not stable (old .zip are not kept)
 
-COPY ./org.archicontribs.modelrepository_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin /
+COPY ./coArchi_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin /
 RUN cd /Archi/plugins/ && \
-  unzip /org.archicontribs.modelrepository_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin && \
-  rm -f /org.archicontribs.modelrepository_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin
+  unzip /coArchi_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin && \
+  rm -f /coArchi_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin
 
 COPY ./package.json /usr/share/nginx/html/
 COPY ./docker-entrypoint.sh /
