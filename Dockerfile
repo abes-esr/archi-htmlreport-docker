@@ -30,8 +30,8 @@ RUN wget --no-check-certificate --output-document="/Archi-Linux64-${ARCHI_VERSIO
 #         because the download URL is not stable (old .zip are not kept)
 
 COPY ./coArchi_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin /
-RUN cd /Archi/plugins/ && \
-  unzip /coArchi_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin && \
+RUN mkdir -p ~/.archi4/dropins && \
+  unzip /coArchi_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin -d ~/.archi4/dropins/ && \
   rm -f /coArchi_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin
 
 COPY ./package.json /usr/share/nginx/html/
