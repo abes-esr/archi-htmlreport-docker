@@ -1,5 +1,13 @@
 #!/bin/sh
 
+REAL_GIT_REPOSITORY="$GIT_REPOSITORY"
+
+# retrieve OAUTH2 token
+if [ -f /run/secrets/git-repository-oauth-token ]; then
+  GIT_REPOSITORY_OAUTH_TOKEN="$(cat /run/secrets/git-repository-oauth-token | jq -Rr @uri )"
+  REAL_GIT_REPOSITORY=$( echo $REAL_GIT_REPOSITORY | sed "s/^\(https\?:\/\/\)\(.*\)/\1oauth2:$GIT_REPOSITORY_OAUTH_TOKEN@\2/" )
+fi
+
 # loop forever but wait $GIT_CHECK_EACH_NBMINUTES between each loops 
 while true
 do
@@ -10,7 +18,7 @@ do
 
   if [ ! -d /archi-model-git-repo/ ]; then
     echo "-> Git clone of archimatetool model repository: $GIT_REPOSITORY"
-    git clone --depth 1 $GIT_REPOSITORY /archi-model-git-repo/
+    git clone --depth 1 $REAL_GIT_REPOSITORY /archi-model-git-repo/
     cd /archi-model-git-repo/
     GIT_HASH_OLD=$(git rev-parse HEAD)
   else
