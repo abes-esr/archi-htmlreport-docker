@@ -20,7 +20,7 @@ RUN apt update && \
 
 # download archimatetool
 RUN wget --no-check-certificate --output-document="/Archi-Linux64-${ARCHI_VERSION}.tgz" \
-         --post-data="do=${ARCHI_VERSION}/Archi-Linux64-${ARCHI_VERSION}.tgz" \
+         --post-data="dl=${ARCHI_VERSION}/Archi-Linux64-${ARCHI_VERSION}.tgz" \
          https://www.archimatetool.com/downloads/archi/ && \
     tar -zxvf /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     rm -f /Archi-Linux64-${ARCHI_VERSION}.tgz
