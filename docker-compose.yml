@@ -8,7 +8,7 @@ services:
 
   archi-htmlreport:
     container_name: archi-htmlreport
-    image: abesesr/archi-htmlreport-docker:1.5.6
+    image: abesesr/archi-htmlreport-docker:1.6.0
     #volumes:
     #  - ./id_rsa_archi:/root/.ssh/id_rsa.orig
     #  - ./id_rsa_archi.pub:/root/.ssh/id_rsa.pub.orig
