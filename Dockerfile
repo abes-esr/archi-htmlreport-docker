@@ -2,8 +2,8 @@ FROM nginx:1.19.4
 
 MAINTAINER Stéphane Gully <gully@abes.fr>
 
-ENV ARCHI_VERSION 4.9.1
-ENV ARCHI_PLUGIN_MODELREPOSITORY_VERSION 0.8.0.202110121448
+ENV ARCHI_VERSION 4.9.2
+ENV ARCHI_PLUGIN_MODELREPOSITORY_VERSION 0.8.2.202202161341
 
 
 WORKDIR /
@@ -20,7 +20,7 @@ RUN apt update && \
 
 # download archimatetool
 RUN wget --no-check-certificate --output-document="/Archi-Linux64-${ARCHI_VERSION}.tgz" \
-         --post-data="dl=${ARCHI_VERSION}/Archi-Linux64-${ARCHI_VERSION}.tgz" \
+         --post-data="zoob=${ARCHI_VERSION}/Archi-Linux64-${ARCHI_VERSION}.tgz" \
          https://www.archimatetool.com/downloads/archi/ && \
     tar -zxvf /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     rm -f /Archi-Linux64-${ARCHI_VERSION}.tgz
