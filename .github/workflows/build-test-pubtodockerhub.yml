@@ -1,0 +1,66 @@
+name: "build-test-pubtodockerhub"
+
+env:
+  DOCKERHUB_IMAGE_PREFIX: abesesr/archi-htmlreport-docker
+
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+      - '.github/**'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-test-pubtodockerhub:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: "Build: checkout source code"
+        uses: actions/checkout@v2          
+      - name: "Build: build docker image"
+        run: |
+          docker build . -t localimage:latest
+
+
+
+          
+      - name: "Tests: run the application with a basic ArchiMate model"
+        run: |
+          docker run -d --rm -p 8080:80 \
+            --name archi-htmlreport \
+            -e GIT_REPOSITORY="https://github.com/abes-esr/archi-model-example.git" \
+            localimage:latest
+          docker ps
+          sleep 20 && docker logs archi-htmlreport
+      - name: "Tests: 1 running container?"
+        run: |
+          NB_CONTAINERS=$(docker ps | grep " Up " | wc -l)
+          test $NB_CONTAINERS = 1
+      - name: "Tests: create-htmlreport post and pre scripts are working?"
+        run: |
+          test $(curl -s http://127.0.0.1:8080/create-htmlreport.prescript.sh.html) = "OK"
+          test $(curl -s http://127.0.0.1:8080/create-htmlreport.postscript.sh.html) = "OK"
+
+
+
+
+      - name: "Push: prepare version from git tags/branchs"
+        id: docker_tag_meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ env.DOCKERHUB_IMAGE_PREFIX }}
+      - name: "Push: login to DockerHub"
+        if: github.event_name != 'pull_request'
+        run: |
+          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin  
+      - name: "Push: push docker image"
+        if: github.event_name != 'pull_request'
+        run: |
+          docker build . -t localimage:latest
+          DOCKER_TAGS="${{ steps.docker_tag_meta.outputs.tags }}"
+          for DOCKER_TAG in $DOCKER_TAGS
+          do
+            docker tag localimage:latest $DOCKER_TAG
+            docker push $DOCKER_TAG
+          done
