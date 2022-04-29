@@ -1,6 +1,6 @@
 # archi-htmlreport-docker
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/abesesr/archi-htmlreport-docker.svg)](https://hub.docker.com/r/abesesr/archi-htmlreport-docker/) [![Build Status](https://travis-ci.org/abes-esr/archi-htmlreport-docker.svg?branch=master)](https://travis-ci.org/abes-esr/archi-htmlreport-docker)
+[![Docker Pulls](https://img.shields.io/docker/pulls/abesesr/archi-htmlreport-docker.svg)](https://hub.docker.com/r/abesesr/archi-htmlreport-docker/) [![build-test-pubtodockerhub](https://github.com/abes-esr/archi-htmlreport-docker/actions/workflows/build-test-pubtodockerhub.yml/badge.svg)](https://github.com/abes-esr/archi-htmlreport-docker/actions/workflows/build-test-pubtodockerhub.yml)
 
 Generates and exposes a HTML web site from an ArchiMateTool model (packaged with Docker 🐳)
 
