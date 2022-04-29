@@ -22,7 +22,6 @@ RUN apt update && \
 RUN curl 'https://www.archimatetool.com/downloads/' \
          -k -L --data-raw "fuck_putin=archi%2F${ARCHI_VERSION}%2FArchi-Linux64-${ARCHI_VERSION}.tgz" \
          > /Archi-Linux64-${ARCHI_VERSION}.tgz && \
-    ls -ail && \
     tar -zxvf /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     rm -f /Archi-Linux64-${ARCHI_VERSION}.tgz
 
