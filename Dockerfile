@@ -2,7 +2,7 @@ FROM nginx:1.19.4
 
 MAINTAINER Stéphane Gully <gully@abes.fr>
 
-ENV ARCHI_VERSION 4.9.2
+ENV ARCHI_VERSION 4.9.3
 ENV ARCHI_PLUGIN_MODELREPOSITORY_VERSION 0.8.2.202202161341
 
 
@@ -22,6 +22,7 @@ RUN apt update && \
 RUN curl 'https://www.archimatetool.com/downloads/' \
          -k -L --data-raw "fuck_putin=archi%2F${ARCHI_VERSION}%2FArchi-Linux64-${ARCHI_VERSION}.tgz" \
          > /Archi-Linux64-${ARCHI_VERSION}.tgz && \
+    ls -ail && \
     tar -zxvf /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     rm -f /Archi-Linux64-${ARCHI_VERSION}.tgz
 
