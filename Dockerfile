@@ -10,13 +10,12 @@ WORKDIR /
 
 # libswt-gtk2-4-jni for archimatetool system dependency
 # xvfb for a headless Xserver needed by archimatetool -nosplash to run without error
-# jq for package.json parsing
 # git for archi model download and updates
 # wget/curl/uzip for Archi/plugins download and extracting
 # vim for easy debug
 
 RUN apt update && \
-    apt install -y xvfb libswt-gtk-4-jni jq git unzip wget curl vim
+    apt install -y xvfb libswt-gtk-4-jni git unzip wget curl vim
 
 # download archimatetool
 RUN curl 'https://www.archimatetool.com/downloads/' \
@@ -34,7 +33,7 @@ RUN mkdir -p ~/.archi4/dropins && \
   unzip /coArchi_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin -d ~/.archi4/dropins/ && \
   rm -f /coArchi_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin
 
-COPY ./package.json /usr/share/nginx/html/
+COPY ./.version /usr/share/nginx/html/
 COPY ./docker-entrypoint.sh /
 COPY ./create-htmlreport.periodically.sh /
 RUN echo "abesesr/archi-htmlreport-docker:1.6.1 generated web site is empty." > /usr/share/nginx/html/index.html && \
