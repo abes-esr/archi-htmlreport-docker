@@ -45,8 +45,7 @@ jobs:
         run: |
           git config --global user.email "github-action@noreply"
           git config --global user.name "Github Action"
-          sed -i "s#Version: [0-9]+\.[0-9]+\.[0-9]+#Version: $NEW_TAG#g" README.md
-          git add .
+          sed -i "s#abesesr/archi-htmlreport-docker:[0-9]+\.[0-9]+\.[0-9]#abesesr/archi-htmlreport-docker:$NEW_TAG#g" README.md
           git commit -m "Version $NEW_TAG"
           echo "test0"
           git tag $NEW_TAG
