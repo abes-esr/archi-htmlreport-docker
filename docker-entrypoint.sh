@@ -3,7 +3,7 @@
 export GIT_CHECK_EACH_NBMINUTES="${GIT_CHECK_EACH_NBMINUTES:="5"}"
 export GIT_REPOSITORY="${GIT_REPOSITORY:=""}"
 
-echo "$(jq -r -M '.name' /usr/share/nginx/html/package.json) version: $(jq -r -M '.version' /usr/share/nginx/html/package.json)"
+echo "version: $(cat /usr/share/nginx/html/.version)"
 echo "Used parameters:"
 echo "----------------"
 env | grep -E "GIT"
