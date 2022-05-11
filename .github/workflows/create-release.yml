@@ -46,7 +46,8 @@ jobs:
           git config --global user.email "github-action@noreply"
           git config --global user.name "Github Action"
           sed -i "s#abesesr/archi-htmlreport-docker:[0-9]\+\.[0-9]\+\.[0-9]\+#abesesr/archi-htmlreport-docker:$NEW_TAG#g" README.md
-          git add README.md
+          echo $NEW_VERSION > .version
+          git add README.md .version
           git commit -m "Version $NEW_TAG"
           git tag $NEW_TAG
           git push
