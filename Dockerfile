@@ -2,7 +2,7 @@ FROM nginx:1.19.4
 
 MAINTAINER Stéphane Gully <gully@abes.fr>
 
-ENV ARCHI_VERSION 4.9.2
+ENV ARCHI_VERSION 4.9.3
 ENV ARCHI_PLUGIN_MODELREPOSITORY_VERSION 0.8.2.202202161341
 
 
@@ -12,16 +12,16 @@ WORKDIR /
 # xvfb for a headless Xserver needed by archimatetool -nosplash to run without error
 # jq for package.json parsing
 # git for archi model download and updates
-# wget/uzip for Archi/plugins download and extracting
+# wget/curl/uzip for Archi/plugins download and extracting
 # vim for easy debug
 
 RUN apt update && \
-    apt install -y xvfb libswt-gtk-4-jni jq git unzip wget vim
+    apt install -y xvfb libswt-gtk-4-jni jq git unzip wget curl vim
 
 # download archimatetool
-RUN wget --no-check-certificate --output-document="/Archi-Linux64-${ARCHI_VERSION}.tgz" \
-         --post-data="zoob=${ARCHI_VERSION}/Archi-Linux64-${ARCHI_VERSION}.tgz" \
-         https://www.archimatetool.com/downloads/archi/ && \
+RUN curl 'https://www.archimatetool.com/downloads/' \
+         -k -L --data-raw "fuck_putin=archi%2F${ARCHI_VERSION}%2FArchi-Linux64-${ARCHI_VERSION}.tgz" \
+         > /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     tar -zxvf /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     rm -f /Archi-Linux64-${ARCHI_VERSION}.tgz
 

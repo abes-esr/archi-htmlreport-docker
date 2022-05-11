@@ -1,6 +1,6 @@
 # archi-htmlreport-docker
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/abesesr/archi-htmlreport-docker.svg)](https://hub.docker.com/r/abesesr/archi-htmlreport-docker/) [![Build Status](https://travis-ci.org/abes-esr/archi-htmlreport-docker.svg?branch=master)](https://travis-ci.org/abes-esr/archi-htmlreport-docker)
+[![Docker Pulls](https://img.shields.io/docker/pulls/abesesr/archi-htmlreport-docker.svg)](https://hub.docker.com/r/abesesr/archi-htmlreport-docker/) [![build-test-pubtodockerhub](https://github.com/abes-esr/archi-htmlreport-docker/actions/workflows/build-test-pubtodockerhub.yml/badge.svg)](https://github.com/abes-esr/archi-htmlreport-docker/actions/workflows/build-test-pubtodockerhub.yml)
 
 Generates and exposes a HTML web site from an ArchiMateTool model (packaged with Docker 🐳)
 
@@ -77,10 +77,8 @@ docker run --rm -p 8080:80 --name archi-htmlreport-dev \
 
 ## Versioning
 
-To generate a new version, just uses npm version stuff. Example:
-- `npm version patch` will bump the latest version number
-- `npm version minor` will bump the second version number
-- `npm version major` will bump the first version number
+To generate a new version, just use the create-release.yml github action:  
+https://github.com/abes-esr/archi-htmlreport-docker/actions/workflows/create-release.yml
 
 It will autobuild a new docker image thanks to the [autobuild dockerhub system](ttps://hub.docker.com/r/abesesr/archi-htmlreport-docker/).
 The latest generated docker image name and tag is:
