@@ -45,6 +45,7 @@ jobs:
         run: |
           git config --global user.email "github-action@noreply"
           git config --global user.name "Github Action"
+          git pull
           npm config set tag-version-prefix ''
           npm config set git-tag-version false
           npm version $NEW_TAG
