@@ -81,6 +81,5 @@ To generate a new version, just use the create-release.yml github action:
 https://github.com/abes-esr/archi-htmlreport-docker/actions/workflows/create-release.yml
 
 It will autobuild a new docker image thanks to the [autobuild dockerhub system](ttps://hub.docker.com/r/abesesr/archi-htmlreport-docker/).
-The latest generated docker image name and tag is:
-
+The latest generated docker image name and tag is:  
 `abesesr/archi-htmlreport-docker:1.6.2`
