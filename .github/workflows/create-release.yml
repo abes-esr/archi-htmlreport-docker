@@ -50,8 +50,12 @@ jobs:
           npm version $NEW_TAG
           sed -i "s#Version: [0-9]+\.[0-9]+\.[0-9]+#Version: $NEW_TAG#g" README.md
           git commit -m "Version $NEW_TAG" README.md package.json
+          echo "test0"
           git tag $NEW_TAG
-          git push && git push --tags
+          echo "test1"
+          git push
+          echo "test2"
+          git push --tags
           ## merge la préparation de la nouvelle version sur develop
           ## (version X.X.X-SNAPSHOT)
           ## CURRENT_GIT_BRANCH vaut main ou master, c'est la où est créé la release
