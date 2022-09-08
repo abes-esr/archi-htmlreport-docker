@@ -59,6 +59,13 @@ do
   else
     echo "-> No change on git, skip the HTML report."
   fi
+  
+  # useful to add data from another repository, like BPMN diagrams
+  if [ -f ./create-htmlreport.checkotherrepository.sh ]; then
+    echo "-> Running the create-htmlreport.checkotherrepository.sh script."
+    chmod +x ./create-htmlreport.checkotherrepository.sh
+    ./create-htmlreport.checkotherrepository.sh
+  fi
 
   echo "-> Waiting $GIT_CHECK_EACH_NBMINUTES minutes before next model check."
   # push few info to the web folder: version.html and create-htmlreport.periodically.log.html
