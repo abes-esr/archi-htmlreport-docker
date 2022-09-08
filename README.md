@@ -13,7 +13,7 @@ We uses it internally at [Abes](http://abes.fr) to generate our "urbanization we
 ```shell
 docker run --rm -p 8080:80 \
   -e GIT_REPOSITORY="https://github.com/abes-esr/archi-model-example.git" \
-  abesesr/archi-htmlreport-docker:1.6.6
+  abesesr/archi-htmlreport-docker:1.6.7
 ```
 Then browse to http://127.0.0.1:8080/ it will display the [demo ArchiMateTool model](https://github.com/abes-esr/archi-model-example.git) in a basic website.
 
@@ -66,13 +66,13 @@ Generated web site will listen on http://127.0.0.1:8080 (replace 127.0.0.1 by yo
 
 To test it locally
 ```
-docker build -t abesesr/archi-htmlreport-docker:1.6.6 .
+docker build -t abesesr/archi-htmlreport-docker:1.6.7 .
 docker run --rm -p 8080:80 --name archi-htmlreport-dev \
   -v $(pwd)/docker-entrypoint.sh:/docker-entrypoint.sh \
   -v $(pwd)/create-htmlreport.periodically.sh:/create-htmlreport.periodically.sh \
   -e GIT_CHECK_EACH_NBMINUTES=5 \
   -e GIT_REPOSITORY="https://github.com/abes-esr/archi-model-example.git" \
-  abesesr/archi-htmlreport-docker:1.6.6
+  abesesr/archi-htmlreport-docker:1.6.7
 ```
 
 ## Versioning
@@ -82,4 +82,4 @@ https://github.com/abes-esr/archi-htmlreport-docker/actions/workflows/create-rel
 
 It will autobuild a new docker image thanks to the [autobuild dockerhub system](ttps://hub.docker.com/r/abesesr/archi-htmlreport-docker/).
 The latest generated docker image name and tag is:  
-`abesesr/archi-htmlreport-docker:1.6.6`
+`abesesr/archi-htmlreport-docker:1.6.7`
