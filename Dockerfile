@@ -19,7 +19,7 @@ RUN apt update && \
 
 # download archimatetool
 RUN curl 'https://www.archimatetool.com/downloads/' \
-         -k -L --data-raw "wordle=archi%2F${ARCHI_VERSION}%2FArchi-Linux64-${ARCHI_VERSION}.tgz" \
+         -k -L --data-raw "ad240cb=archi%2F${ARCHI_VERSION}%2FArchi-Linux64-${ARCHI_VERSION}.tgz" \
          > /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     tar -zxvf /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     rm -f /Archi-Linux64-${ARCHI_VERSION}.tgz
