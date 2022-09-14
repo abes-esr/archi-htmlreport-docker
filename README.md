@@ -2,7 +2,7 @@
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/abesesr/archi-htmlreport-docker.svg)](https://hub.docker.com/r/abesesr/archi-htmlreport-docker/) [![build-test-pubtodockerhub](https://github.com/abes-esr/archi-htmlreport-docker/actions/workflows/build-test-pubtodockerhub.yml/badge.svg)](https://github.com/abes-esr/archi-htmlreport-docker/actions/workflows/build-test-pubtodockerhub.yml)
 
-Generates and exposes a HTML web site from an ArchiMateTool model (packaged with Docker 🐳)
+Generates and exposes a HTML web site from an <a href="https://www.archimatetool.com/" target="_blank">ArchiMateTool model</a> (packaged with Docker 🐳)
 
 We uses it internally at [Abes](http://abes.fr) to generate our "urbanization web site" helping us to know how is organized our IT system.
 
