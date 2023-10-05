@@ -15,12 +15,11 @@ WORKDIR /
 # vim for easy debug
 
 RUN apt update && \
-    apt install -y xvfb libswt-gtk-4-jni git unzip curl vim jq dbus-x11
+    apt install -y xvfb libswt-gtk-4-jni git unzip wget curl vim
 
 # download archimatetool
-RUN curl -G 'https://www.archimatetool.com/downloads/archi5.php' \
-         -d "/${ARCHI_VERSION}/Archi-Linux64-${ARCHI_VERSION}.tgz" \
-         > /Archi-Linux64-${ARCHI_VERSION}.tgz && \
+RUN curl "https://www.archimatetool.com/downloads/archi-5.php?/${ARCHI_VERSION}/Archi-Linux64-${ARCHI_VERSION}.tgz" \
+		> /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     tar -zxvf /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     rm -f /Archi-Linux64-${ARCHI_VERSION}.tgz
 
@@ -42,6 +41,6 @@ RUN echo "abesesr/archi-htmlreport-docker:1.6.1 generated web site is empty." > 
 # for git clone through ssh stuff
 RUN mkdir -p /root/.ssh/
 RUN echo "Host *" > /root/.ssh/config && echo "StrictHostKeyChecking no" >> /root/.ssh/config
-
+		 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
