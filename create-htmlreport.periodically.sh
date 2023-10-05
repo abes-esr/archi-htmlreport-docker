@@ -43,6 +43,7 @@ do
     xvfb-run /Archi/Archi -consoleLog -nosplash \
       -application com.archimatetool.commandline.app \
       --modelrepository.loadModel /archi-model-git-repo/ \
+      -saveModel /archi-model-git-repo/model.archimate \
       --html.createReport /usr/share/nginx/html-tmp
 
     if [ -f ./create-htmlreport.postscript.sh ]; then
