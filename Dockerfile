@@ -15,11 +15,11 @@ WORKDIR /
 # vim for easy debug
 
 RUN apt update && \
-    apt install -y xvfb libswt-gtk-4-jni git unzip wget curl vim
+    apt install -y xvfb libswt-gtk-4-jni git unzip curl vim jq dbus-x11
 
 # download archimatetool
-RUN curl 'https://www.archimatetool.com/downloads/' \
-         -k -L --data-raw "ad240cb=archi%2F${ARCHI_VERSION}%2FArchi-Linux64-${ARCHI_VERSION}.tgz" \
+RUN curl -G 'https://www.archimatetool.com/downloads/archi5.php' \
+         -d "/${ARCHI_VERSION}/Archi-Linux64-${ARCHI_VERSION}.tgz" \
          > /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     tar -zxvf /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     rm -f /Archi-Linux64-${ARCHI_VERSION}.tgz
@@ -29,8 +29,8 @@ RUN curl 'https://www.archimatetool.com/downloads/' \
 #         because the download URL is not stable (old .zip are not kept)
 
 COPY ./coArchi_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin /
-RUN mkdir -p ~/.archi4/dropins && \
-  unzip /coArchi_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin -d ~/.archi4/dropins/ && \
+RUN mkdir -p ~/.archi/dropins && \
+  unzip /coArchi_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin -d ~/.archi/dropins/ && \
   rm -f /coArchi_${ARCHI_PLUGIN_MODELREPOSITORY_VERSION}.archiplugin
 
 COPY ./.version /usr/share/nginx/html/
