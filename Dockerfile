@@ -15,7 +15,7 @@ WORKDIR /
 # vim for easy debug
 
 RUN apt update && \
-    apt install -y xvfb libswt-gtk-4-jni git unzip wget curl vim
+    apt install -y xvfb libswt-gtk-4-jni git unzip curl vim jq dbus-x11
 
 # download archimatetool
 RUN curl "https://www.archimatetool.com/downloads/archi-5.php?/${ARCHI_VERSION}/Archi-Linux64-${ARCHI_VERSION}.tgz" \
