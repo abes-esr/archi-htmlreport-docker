@@ -1,8 +1,8 @@
-FROM nginx:1.19.4
+FROM nginx:mainline
 
 MAINTAINER Stéphane Gully <gully@abes.fr>
 
-ENV ARCHI_VERSION 5.1.0
+ENV ARCHI_VERSION 5.2.0
 ENV ARCHI_PLUGIN_MODELREPOSITORY_VERSION 0.8.8
 
 
@@ -18,7 +18,7 @@ RUN apt update && \
     apt install -y xvfb libswt-gtk-4-jni git unzip curl vim jq dbus-x11
 
 # download archimatetool
-RUN curl "https://www.archimatetool.com/downloads/archi-5.php?/${ARCHI_VERSION}/Archi-Linux64-${ARCHI_VERSION}.tgz" \
+RUN curl "https://www.archimatetool.com/downloads/archi_5.php?/${ARCHI_VERSION}/Archi-Linux64-${ARCHI_VERSION}.tgz" \
 		> /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     tar -zxvf /Archi-Linux64-${ARCHI_VERSION}.tgz && \
     rm -f /Archi-Linux64-${ARCHI_VERSION}.tgz
