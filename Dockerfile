@@ -1,4 +1,4 @@
-FROM nginx:mainline
+FROM nginx:1.25.3
 
 MAINTAINER Stéphane Gully <gully@abes.fr>
 
