@@ -17,7 +17,7 @@ jobs:
     steps:
 
       - name: "Build: checkout source code"
-        uses: actions/checkout@v2          
+        uses: actions/checkout@v3
       - name: "Build: build docker image"
         run: |
           docker build . -t localimage:latest
@@ -47,7 +47,7 @@ jobs:
 
       - name: "Push: prepare version from git tags/branchs"
         id: docker_tag_meta
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v5
         with:
           images: ${{ env.DOCKERHUB_IMAGE_PREFIX }}
       - name: "Push: login to DockerHub"
